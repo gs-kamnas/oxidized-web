@@ -17,3 +17,11 @@
     padding-top: 2px;
     width: auto;
 }
+
+.container-fluid {
+   margin: 0.5em;
+}
+
+footer {
+   margin: 0.5em;
+}
