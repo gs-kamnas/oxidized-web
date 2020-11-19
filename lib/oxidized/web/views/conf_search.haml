@@ -31,6 +31,8 @@
   $(function() {
     $('#versionsTable').dataTable({
       dom: 'C<"clear">lfrtip',
+      stateDuration: 0,
+      stateSave: true,
       bAutoWidth: false,
       "order": [[0, "desc"]]
     });

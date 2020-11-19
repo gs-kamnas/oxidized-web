@@ -188,12 +188,22 @@ module Oxidized
       get '/node/version/diffs' do
         node, @json = route_parse :node
         @data = nil
-        @info = {node: node, group: params[:group], oid: params[:oid], date: params[:date], num: params[:num], num2: (params[:num].to_i - 1)}
         group = nil
-        if @info[:group] != ''
-          group = @info[:group]
+        if params[:group] != ''
+          group = params[:group]
         end
         @oids_dates = nodes.version node, group
+        latest_version = @oids_dates.first
+        if params[:oid] == 'HEAD'
+          params[:oid] = latest_version[:oid]
+          if params[:date].nil?
+            params[:date] = latest_version[:date]
+          end
+          if params[:num].nil?
+            params[:num] = @oids_dates.count
+          end
+        end
+        @info = {node: node, group: params[:group], oid: params[:oid], date: params[:date], num: params[:num], num2: (params[:num].to_i - 1)}
         if params[:oid2]
           @info[:oid2] = params[:oid2]
           oid2 = nil
