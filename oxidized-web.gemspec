@@ -21,8 +21,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'oxidized',            '~> 0.26'
   s.add_runtime_dependency 'puma',                '~> 3.11.4'
   s.add_runtime_dependency 'sass',                '~> 3.3'
-  s.add_runtime_dependency 'sinatra',             '~> 1.4', '>= 1.4.6'
-  s.add_runtime_dependency 'sinatra-contrib',     '~> 1.4', '>= 1.4.6'
+  s.add_runtime_dependency 'sinatra',             '~> 2.0'
+  s.add_runtime_dependency 'sinatra-contrib',     '~> 2.0'
   s.add_runtime_dependency 'json',                '>= 1.7.0'
   s.add_runtime_dependency 'rack-test',           '~> 0.7.0'
 
