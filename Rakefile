@@ -2,7 +2,7 @@ require 'bundler/gem_tasks'
 require 'rake/testtask'
 
 gemspec = eval(File.read(Dir['*.gemspec'].first))
-gemfile = [gemspec.name, gemspec.version].join('-') + '.gem'
+gemfile = "#{[gemspec.name, gemspec.version].join('-')}.gem"
 
 # Integrate Rubocop if available
 begin
@@ -54,8 +54,7 @@ end
 
 desc 'Normalise file permissions'
 task :chmod do
-  xbit = %w[
-  ]
+  xbit = %w[]
   dirs = []
   %x(git ls-files -z).split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }.each do |file|
     dirs.push(File.dirname(file))
