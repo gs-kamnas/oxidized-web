@@ -306,7 +306,7 @@ module Oxidized
         HTMLEntities.new.encode(utf8_encoded_content).each_line do |line|
           if /^\+/.match(line)
             new_diff.push(line)
-          elsif /^\-/.match(line)
+          elsif /^-/.match(line)
             old_diff.push(line)
           else
             new_diff.push(line)
@@ -321,14 +321,14 @@ module Oxidized
             break
           end
 
-          if (/^\-.*/.match(old_diff[i])) && !(/^\+.*/.match(new_diff[i]))
+          if (/^-.*/.match(old_diff[i])) && !(/^\+.*/.match(new_diff[i]))
             # tag removed latter to add color syntax
             insert = 'empty_line'
             # ugly way to avoid asymmetry if at display the line takes 2 line on the screen
             insert = "&nbsp;\n"
             new_diff.insert(i, insert)
             length_n += 1
-          elsif !(/^\-.*/.match(old_diff[i])) && (/^\+.*/.match(new_diff[i]))
+          elsif !(/^-.*/.match(old_diff[i])) && (/^\+.*/.match(new_diff[i]))
             insert = 'empty_line'
             insert = "&nbsp;\n"
             old_diff.insert(i, insert)

@@ -9,7 +9,7 @@ module Oxidized
 
       # read cloginrc and return a hash with node name, which a hash value which contains user,
       # password, eventually enable
-      def cloginrc clogin_file
+      def cloginrc clogin_file # rubocop:disable Metrics/AbcSize
         close_file = clogin_file
         file = close_file.read
         file = file.gsub('add', '')

@@ -10,7 +10,7 @@ module Oxidized
         listen, uri = listen.split '/'
         addr, _, port = listen.rpartition ':'
         port, addr = addr, nil if not port
-        uri = '/' + uri.to_s
+        uri = "/#{uri}"
         @opts = {
           Host: addr,
           Port: port,
