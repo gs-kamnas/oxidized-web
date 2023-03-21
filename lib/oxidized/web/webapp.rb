@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'sinatra/json'
 require 'sinatra/url_for'
 require 'tilt/haml'
-require 'sass'
+require 'sassc'
 require 'pp'
 require 'oxidized/web/mig'
 require 'htmlentities'
@@ -145,7 +145,8 @@ module Oxidized
       end
 
       get '/css/*.css' do
-        sass "sass/#{params[:splat].first}".to_sym
+        sass = File.read("sass/#{params[:splat].first}")
+        SassC::Engine.new(sass, style: :compressed).render
       end
 
       # show the lists of versions for a node
