@@ -47,6 +47,12 @@ task :tag do
   system "git tag #{gemspec.version}"
 end
 
+desc 'Build/Bundle the JS and CSS'
+task :jsbuild do
+  abort("yarn install failed") unless system "yarn install"
+  abort("JS/CSS bundling failed") unless system "yarn run build"
+end
+
 desc 'Push to rubygems'
 task :push => :tag do
   system "gem push pkg/#{gemfile}"

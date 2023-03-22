@@ -8,7 +8,7 @@
 .row
   .pull-right
     %form
-      %button.ColVis_Button{type: 'button', onclick: 'history.go();'}
+      %button.btn-btn-default{type: 'button', onclick: 'history.go();'}
         %span.glyphicon.glyphicon-repeat Refresh
   .table-responsive
     %table.table.table-condensed.table-striped.table-hover#versionsTable
@@ -39,16 +39,17 @@
                 %img{src: url_for('/images/diff_15x17.png')}
 
 :javascript
-  $(function() {
+  function renderTables() {
     $('#versionsTable').dataTable({
-      dom: 'C<"clear">lfrtip',
+      dom: 'B<"clear">lfrtip',
       "order": [[0, "desc"]],
       bAutoWidth: false,
       stateDuration: 0,
       stateSave: true,
+      buttons: [ { extend: 'colvis', text: 'Show / hide columns' } ],
       columnDefs: [{
         visible: false,
         targets: [2, 3]
       }]
     });
-  });
+  }

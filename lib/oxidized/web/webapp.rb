@@ -2,7 +2,6 @@ require 'sinatra/base'
 require 'sinatra/json'
 require 'sinatra/url_for'
 require 'tilt/haml'
-require 'sassc'
 require 'pp'
 require 'oxidized/web/mig'
 require 'htmlentities'
@@ -142,11 +141,6 @@ module Oxidized
         migration = Mig.new(router_db_files, cloginrc_file, path_new_file)
         migration.go_rancid_migration
         redirect url_for('//nodes')
-      end
-
-      get '/css/*.css' do
-        sass = File.read("sass/#{params[:splat].first}")
-        SassC::Engine.new(sass, style: :compressed).render
       end
 
       # show the lists of versions for a node

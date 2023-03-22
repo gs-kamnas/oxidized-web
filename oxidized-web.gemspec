@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = 'oxidized-web'
-  s.version           = '0.13.2'
+  s.version           = '0.14.0'
   s.licenses          = %w[Apache-2.0]
   s.platform          = Gem::Platform::RUBY
   s.authors           = ['Saku Ytti', 'Samer Abdel-Hafez']
@@ -9,7 +9,8 @@ Gem::Specification.new do |s|
   s.summary           = 'sinatra API + webUI for oxidized'
   s.description       = 'puma+sinatra+haml webUI + REST API for oxidized'
   s.rubyforge_project = s.name
-  s.files             = %x(git ls-files).split("\n")
+  s.files             = Dir['lib/oxidized/web/public/**/*']
+  s.files             += %x(git ls-files).split("\n")
   s.executables       = %w[]
   s.require_path      = 'lib'
 
@@ -20,7 +21,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'htmlentities',        '~> 4.3'
   s.add_runtime_dependency 'oxidized',            '~> 0.26'
   s.add_runtime_dependency 'puma',                '~> 3.11.4'
-  s.add_runtime_dependency 'sassc',               '~> 2.4'
   s.add_runtime_dependency 'sinatra',             '~> 2.0'
   s.add_runtime_dependency 'sinatra-contrib',     '~> 2.0'
   s.add_runtime_dependency 'json',                '>= 1.7.0'

@@ -7,9 +7,9 @@
 .row
   .pull-right
     %form
-      %button.ColVis_Button#reload{type: 'button'}
+      %button.btn.btn-default#reload{type: 'button'}
         %span.glyphicon.glyphicon-refresh Reload
-      %button.ColVis_Button{type: 'button', onclick: 'history.go();'}
+      %button.btn.btn-default{type: 'button', onclick: 'history.go();'}
         %span.glyphicon.glyphicon-repeat Refresh
 
   .table-responsive
@@ -58,9 +58,9 @@
                 %span.glyphicon.glyphicon-repeat
 
 :javascript
-  $(function() {
+  function renderTables() {
     $('#nodesTable').dataTable({
-      dom: 'C<"clear">lfrtip',
+      dom: 'B<"clear">lfrtip',
       bAutoWidth: false,
       stateDuration: 0,
       stateSave: true,
@@ -72,10 +72,14 @@
         type: "string",
         targets: 3
       }],
-      colVis: {
-        exclude: [0, 7]
-      }
+      buttons: [
+        {
+          extend: 'colvis',
+          text: 'Show / hide columns',
+          columns: function( idx, data, node) { return $.inArray(idx, [0, 7]) === -1 }
+        }
+      ]
     });
-  });
+  }
 
 

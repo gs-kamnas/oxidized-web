@@ -1,3 +1,19 @@
+// Import 3rd party libraries
+window.$ = window.jQuery = require( 'jquery' );
+
+//  ESM or CJS loader support
+// Operates on the global '$' jQuery variable
+require( 'bootstrap/dist/js/bootstrap' );
+
+let dataTable = require( 'datatables.net-bs' );
+dataTable(window, $)
+
+let buttons = require( 'datatables.net-buttons-bs' );
+buttons(window, $)
+
+let columnVisibility = require( 'datatables.net-buttons/js/buttons.colVis.js' );
+columnVisibility(window, $)
+
 // Add a line for a new file to upload
 var add_file_upload = function() {
   var rancidDbDiv = $("div[id^='rancidDb']:last");
@@ -26,11 +42,10 @@ var onFileSelected = function() {
 };
 
 // fix colvis buttons
+// TODO likely needs changes as we are no longer using legacy colvis
 var fixColVisBtn = function() {
-  $('.ColVis_Button').each(function() {
-    $(this).addClass('btn btn-default');
-  });
-  $('.ColVis_MasterButton').each(function() {
+  $('.dt-buttons').each(function() {
+    $(this).removeClass('btn-group');
     $(this).addClass('pull-right');
   });
 };
@@ -59,6 +74,7 @@ var convertTime = function() {
 };
 
 $(function() {
+  if( typeof renderTables === "function" ) renderTables();
   onFileSelected();
   fixColVisBtn();
   convertTime();

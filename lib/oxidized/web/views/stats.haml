@@ -6,7 +6,7 @@
 
 .row
   .pull-right
-    %button.ColVis_Button{type: 'button', onclick: 'history.go();'}
+    %button.btn.btn-default{type: 'button', onclick: 'history.go();'}
       %span.glyphicon.glyphicon-repeat Refresh
 
   .table-responsive
@@ -80,9 +80,9 @@
             %td.time= last_failure
 
 :javascript
-  $(function() {
+  function renderTables() {
     $('#statsTable').dataTable({
-      dom: 'C<"clear">lfrtip',
+      dom: 'B<"clear">lfrtip',
       "lengthMenu": [[50, 250, 500, -1], [50, 250, 500, "All"]],
       bAutoWidth: false,
       stateDuration: 0,
@@ -96,8 +96,12 @@
         },
         targets: 4
       }],
-      colVis: {
-        exclude: [0, 5]
-      }
+      buttons: [
+        {
+          extend: 'colvis',
+          text: 'Show / hide columns',
+          columns: function( idx, data, node) { return $.inArray(idx, [0, 5]) === -1 }
+        }
+      ]
     });
-  });
+  }

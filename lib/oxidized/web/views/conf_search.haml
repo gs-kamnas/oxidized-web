@@ -9,7 +9,7 @@
 .row
   .pull-right
     %form
-      %button.ColVis_Button{type: 'button', onclick: 'history.go();'}
+      %button.btn.btn-default{type: 'button', onclick: 'history.go();'}
         %span.glyphicon.glyphicon-repeat Refresh
   .table-responsive
     %table.table.table-condensed.table-striped.table-hover#versionsTable
@@ -28,13 +28,13 @@
                 %span.glyphicon.glyphicon-cloud-download
 
 :javascript
-  $(function() {
+  function renderTables() {
     $('#versionsTable').dataTable({
-      dom: 'C<"clear">lfrtip',
+      dom: 'B<"clear">lfrtip',
       stateDuration: 0,
       stateSave: true,
       bAutoWidth: false,
+      buttons: [ { extend: 'colvis', text: 'Show / hide columns' } ],
       "order": [[0, "desc"]]
     });
-  });
-
+  }
