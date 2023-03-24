@@ -5,6 +5,7 @@ require:
 # Do not attempt to police vendored code, and exclude special cases
 AllCops:
   TargetRubyVersion: 2.3
+  NewCops: enable
   Exclude:
     - 'vendor/**/*'
 
@@ -55,3 +56,8 @@ Style/HashTransformValues:
 Style/RescueModifier:
   Enabled: false
 
+Style/FetchEnvVar:
+  Enabled: false
+
+Gemspec/RequireMFA:
+  Enabled: false

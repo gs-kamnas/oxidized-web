@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description       = 'puma+sinatra+haml webUI + REST API for oxidized'
   s.rubyforge_project = s.name
   s.files             = Dir['lib/oxidized/web/public/**/*']
-  s.files             += %x(git ls-files).split("\n")
+  s.files += %x(git ls-files).split("\n")
   s.executables       = %w[]
   s.require_path      = 'lib'
 
