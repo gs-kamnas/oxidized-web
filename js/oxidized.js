@@ -42,7 +42,6 @@ var onFileSelected = function() {
 };
 
 // fix colvis buttons
-// TODO likely needs changes as we are no longer using legacy colvis
 var fixColVisBtn = function() {
   $('.dt-buttons').each(function() {
     $(this).removeClass('btn-group');
