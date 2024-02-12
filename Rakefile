@@ -31,7 +31,7 @@ task :test do
   end
 end
 
-task build: :chmod
+task build: [:chmod, :jsbuild]
 ## desc 'Install gem'
 ## task :install => :build do
 ##   system "sudo -Es sh -c \'umask 022; gem install gems/#{file}\'"
